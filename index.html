@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="temperature-card">
+      <h1>Temperature Converter</h1>
+      <p>Enter the tempearture and select unit</p>
+      <form action="" id="formTemperature">
+        <label for="value"></label>
+        <input type="number" id="value" placeholder="input a number" />
+        <label for="fromDropdown"></label>
+        <select name="fromDropdown" id="fromDropdown">
+          <option value="">From unit</option>
+          <option value="celcius">celcius</option>
+          <option value="fahrenheit">fahrenheit</option>
+          <option value="celcius">kelvin</option>
+        </select>
+
+        <label for="toDropdown"></label>
+        <select name="toDropdown" id="toDropdown">
+          <option value="">to unit</option>
+          <option value="celcius">celcius</option>
+          <option value="fahrenheit">fahrenheit</option>
+          <option value="kelvin">kelvin</option>
+        </select>
+
+        <button type="submit">convert</button>
+      </form>
+      <h1 class="answers"></h1>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
