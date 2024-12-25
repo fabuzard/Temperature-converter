@@ -1,12 +1,26 @@
 const form = document.getElementById("formTemperature");
 const result = document.querySelector(".answers");
+const submitbtn = document.querySelector(".submitbutton");
+const fromUnt = document.getElementById("fromDropdown");
+const toUnt = document.getElementById("toDropdown");
+const container = document.querySelector(".dropDownContainer"); // Use class instead of ID
+
+// Check if both dropdowns are valid, enable/disable button
+container.addEventListener("change", () => {
+  if (fromUnt.value !== "" && toUnt.value !== "") {
+    submitbtn.disabled = false;
+  } else {
+    submitbtn.disabled = true;
+  }
+});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const temp = parseFloat(document.getElementById("value").value);
-  const fromUnit = document.getElementById("fromDropdown").value;
-  const toUnit = document.getElementById("toDropdown").value;
+  const fromUnit = fromUnt.value;
+  const toUnit = toUnt.value;
+  console.log(`temp = ${temp}`);
 
   // Check if the temperature input or the dropdown selections are empty
   if (isNaN(temp) || fromUnit === "" || toUnit === "") {
@@ -16,6 +30,7 @@ form.addEventListener("submit", (event) => {
 
   let convertedTemp;
 
+  // Conversion logic
   if (fromUnit === toUnit) {
     convertedTemp = temp;
   } else if (fromUnit === "celsius" && toUnit === "fahrenheit") {
@@ -31,6 +46,8 @@ form.addEventListener("submit", (event) => {
   } else if (fromUnit === "kelvin" && toUnit === "fahrenheit") {
     convertedTemp = ((temp - 273.15) * 9) / 5 + 32;
   }
+
+  console.log(convertedTemp);
 
   // Display the conversion result
   result.textContent = `${temp} ${fromUnit} is ${convertedTemp} ${toUnit}`;
