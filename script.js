@@ -4,15 +4,27 @@ const submitbtn = document.querySelector(".submitbutton");
 const fromUnt = document.getElementById("fromDropdown");
 const toUnt = document.getElementById("toDropdown");
 const container = document.querySelector(".dropDownContainer"); // Use class instead of ID
+const inputValue = document.getElementById("value");
 
 // Check if both dropdowns are valid, enable/disable button
-container.addEventListener("change", () => {
-  if (fromUnt.value !== "" && toUnt.value !== "") {
+// container.addEventListener("change", () => {
+//   if (fromUnt.value !== "" && toUnt.value !== "" && inputValue.value !== "") {
+//     submitbtn.disabled = false;
+//   } else {
+//     submitbtn.disabled = true;
+//   }
+// });
+
+function validteForm() {
+  if (fromUnt.value !== "" && toUnt.value !== "" && inputValue.value !== "") {
     submitbtn.disabled = false;
   } else {
     submitbtn.disabled = true;
   }
-});
+}
+
+container.addEventListener("change", validteForm);
+inputValue.addEventListener("change", validteForm);
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
